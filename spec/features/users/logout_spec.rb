@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "clicking the logout button" do
+RSpec.describe "clicking the logout button", type: :feature do
   before :each do
     @user = create(:user)
     login_as(@user)

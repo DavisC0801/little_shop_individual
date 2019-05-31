@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Cart show page" do
+RSpec.describe "Cart show page", type: :feature do
   before :each do
     @merchant_1 = create(:merchant)
     @merchant_2 = create(:merchant)

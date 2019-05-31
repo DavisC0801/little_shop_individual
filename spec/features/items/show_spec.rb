@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "item show page" do
+RSpec.describe "item show page", type: :feature do
   before :each do
     @merchant = create(:merchant)
     @item = create(:item, user: @merchant)

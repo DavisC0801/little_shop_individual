@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin User Index' do
+RSpec.describe 'Admin User Index', type: :feature do
   describe 'as an admin' do
     it 'sees all default users with links to admin user path' do
       @user_1 = create(:user)

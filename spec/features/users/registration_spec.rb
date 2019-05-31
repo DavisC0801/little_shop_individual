@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the registration page' do
+RSpec.describe 'the registration page', type: :feature do
   describe 'happy path' do
     it "should create a new user after filling out the form" do
       visit registration_path

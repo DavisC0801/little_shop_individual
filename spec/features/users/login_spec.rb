@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "the login page" do
+RSpec.describe "the login page", type: :feature do
   before :each do
     @user = create(:user)
     @merchant = create(:merchant)

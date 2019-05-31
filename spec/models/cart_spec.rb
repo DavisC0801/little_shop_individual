@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Cart do
+RSpec.describe Cart, type: :model do
   describe "Cart with existing contents" do
     before :each do
       @item_1 = create(:item, id: 1)

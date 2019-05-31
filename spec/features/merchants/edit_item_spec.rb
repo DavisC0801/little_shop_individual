@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Merchant editing an item" do
+RSpec.describe "Merchant editing an item", type: :feature do
   before :each do
     @merchant = create(:merchant)
     @item = create(:item, user: @merchant)

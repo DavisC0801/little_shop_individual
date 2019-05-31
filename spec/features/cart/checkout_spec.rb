@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include ActionView::Helpers::NumberHelper
 
-RSpec.describe "Checking out" do
+RSpec.describe "Checking out", type: :feature do
   before :each do
     @merchant_1 = create(:merchant)
     @merchant_2 = create(:merchant)

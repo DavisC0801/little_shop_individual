@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include ActionView::Helpers::NumberHelper
 
-RSpec.describe 'merchant order show workflow' do
+RSpec.describe 'merchant order show workflow', type: :feature do
   describe 'as a merchant' do
     before :each do
       @merchant1 = create(:merchant)

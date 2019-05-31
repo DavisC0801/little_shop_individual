@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Merchant index page" do
+RSpec.describe "Merchant index page", type: :feature do
   before :each do
     @merchant = create(:merchant)
     @item_1, @item_2 = create_list(:item, 2, user: @merchant)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include ActionView::Helpers::NumberHelper
 
-RSpec.describe 'Merchant Dashboard Items page' do
+RSpec.describe 'Merchant Dashboard Items page', type: :feature do
   before :each do
     @merchant = create(:merchant)
     @admin = create(:admin)

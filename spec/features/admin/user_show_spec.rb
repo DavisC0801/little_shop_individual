@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin User Show' do
+RSpec.describe 'Admin User Show', type: :feature do
   describe 'as an admin' do
     it 'sees the same info a user sees, without option to edit' do
       user = create(:user)

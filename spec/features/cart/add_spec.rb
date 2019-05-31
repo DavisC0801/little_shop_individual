@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe "adding an item to the cart" do
+RSpec.describe "adding an item to the cart", type: :feature do
   before :each do
     @item = create(:item)
   end

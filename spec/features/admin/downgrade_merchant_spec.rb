@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Downgrade Merchant to User' do
+RSpec.describe 'Downgrade Merchant to User', type: :feature do
   describe 'As an admin' do
     describe 'from the admin merchant dashboard (show)' do
       it 'can click button to downgrade a merchant' do
