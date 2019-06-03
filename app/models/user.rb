@@ -3,12 +3,14 @@ class User < ApplicationRecord
 
   enum role: [:default, :merchant, :admin]
 
-  validates_presence_of :name, :address, :city, :state, :zip
+  validates_presence_of :name
   validates :email, presence: true, uniqueness: true
 
   # as a consumer
   has_many :orders
   has_many :order_items, through: :orders
+  has_many :addresses
+  accepts_nested_attributes_for :addresses
 
   # as a merchant
   has_many :items, foreign_key: 'merchant_id'
@@ -42,14 +44,7 @@ class User < ApplicationRecord
   end
 
   def top_states_by_items_shipped(limit)
-    items.joins(:order_items)
-         .joins('join orders on orders.id = order_items.order_id')
-         .joins('join users on users.id = orders.user_id')
-         .where(order_items: {fulfilled: true}, orders: {status: :shipped})
-         .group('users.state')
-         .select('users.state, sum(order_items.quantity) AS quantity')
-         .order('quantity DESC')
-         .limit(limit)
+    items.joins(:order_items).joins('join orders on orders.id = order_items.order_id').where(order_items: {fulfilled: true}, orders: {status: :shipped}).group('users.state').select('users.state, sum(order_items.quantity) AS quantity').order('quantity DESC').limit(limit)
   end
 
   def top_cities_by_items_shipped(limit)
