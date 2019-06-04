@@ -1,0 +1,28 @@
+<%= form_for @address, url: form_submit_path do |f| %>
+  <p>
+    <%= f.label :nickname %>:
+    <%= f.text_field :nickname, required: true, value: "" %>
+  </p>
+
+  <p>
+    <%= f.label :street %>:
+    <%= f.text_field :street, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :city %>:
+    <%= f.text_field :city, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :state %>:
+    <%= f.text_field :state, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :zip %>:
+    <%= f.text_field :zip, type: :number, minlength: 5, maxlength: 5, required: true %>
+  </p>
+
+  <%= f.submit "Submit" %>
+<% end %>
