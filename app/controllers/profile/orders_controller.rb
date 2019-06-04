@@ -30,8 +30,20 @@ class Profile::OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find(params[:id])
+    update_hash = {"address_id" => params[:address_id]}
+    if @order.update(update_hash)
+      flash[:success] = "The shipping address for order #{@order.id} has been updated."
+      redirect_to profile_order_path(@order.id)
+    else
+      flash[:danger] = order.errors.full_messages
+      render :show
+    end
+  end
+
   def create
-    order = Order.create(user: current_user, status: :pending)
+    order = Order.create(user: current_user, status: :pending, address: Address.find(params[:format]))
     cart.items.each do |item, quantity|
       order.order_items.create(item: item, quantity: quantity, price: item.price)
     end
