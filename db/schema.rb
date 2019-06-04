@@ -17,15 +17,13 @@ ActiveRecord::Schema.define(version: 20190603180132) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "nickname", default: "Home"
-    t.string "address"
+    t.string "street"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id"
-    t.index ["order_id"], name: "index_addresses_on_order_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -72,17 +70,13 @@ ActiveRecord::Schema.define(version: 20190603180132) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email"
   end
 
   add_foreign_key "addresses", "orders"
-  add_foreign_key "addresses", "users"
   add_foreign_key "items", "users", column: "merchant_id"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
   add_foreign_key "users", "addresses"
 end
