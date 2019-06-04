@@ -3,8 +3,15 @@
   <p>Your Cart is empty.</p>
 <% else %>
   <h3>Total: <%= number_to_currency(cart.total) %></h3>
-  <% if current_user %>
-    <%= button_to "Check Out", profile_orders_path, method: :post %>
+  <% if current_user && current_user.addresses.empty? %>
+    <p>You must have at least one <%= link_to "address", new_profile_address_path %> to check out.</p>
+  <% elsif current_user %>
+    <% current_user.addresses.each do |address| %>
+      <div id="<%= address.id %>-checkout">
+      <%= label_tag(:address, "#{address.nickname} - #{address.street}, #{address.city}, #{address.state} #{address.zip}") %><br>
+      <%= button_to "Check Out With This Address", profile_orders_path(address.id), method: :post %>
+      </div>
+    <% end %>
   <% else %>
     <p>You must <%= link_to "register", registration_path %>
       or <%= link_to "log in", login_path %> to check out.</p>
