@@ -1,0 +1,19 @@
+<h1>Coupons</h1>
+
+<% @coupons.each do |coupon| %>
+  <%= tag.section id: "coupon-#{coupon.id}" do %>
+    <p>Name: <%= coupon.name %></p>
+    <p>Value: <%= coupon.value %></p>
+    <p>Type: <%= coupon.coupon_type %></p>
+    <p>Active: <%= coupon.active %></p>
+  <% end %>
+  <% if coupon.active %>
+    <%= button_to "Disable Coupon", dashboard_disable_coupon_path(coupon), method: :patch %>
+  <% else %>
+    <%= button_to "Enable Coupon", dashboard_enable_coupon_path(coupon), method: :patch %>
+  <% end %>
+  <%= button_to "Edit Coupon", edit_dashboard_coupon_path(coupon.id), method: :get unless current_admin? %>
+  <%= button_to "Delete Coupon", dashboard_coupon_path(coupon.id), method: :delete unless current_admin? %>
+<% end %>
+<br>
+<%= button_to "Add New Coupon", new_dashboard_coupon_path, method: :get %>

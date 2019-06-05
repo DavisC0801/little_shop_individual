@@ -12,8 +12,10 @@
 
   <% if @order.status == 'pending' %>
     <% current_user.addresses.each do |address| %>
-      <%= label_tag(:address, "#{address.nickname} - #{address.street}, #{address.city}, #{address.state} #{address.zip}") %><br>
-      <%= button_to "Change shipping to this address", profile_order_path(@order.id), params: { :address_id => address.id }, method: :patch %>
+      <% if !(address.id == @order.address.id) %>
+        <%= label_tag(:address, "#{address.nickname} - #{address.street}, #{address.city}, #{address.state} #{address.zip}") %><br>
+        <%= button_to "Change shipping to this address", profile_order_path(@order.id), params: { :address_id => address.id }, method: :patch %>
+      <% end %>
     <% end %>
   <% end %>
 

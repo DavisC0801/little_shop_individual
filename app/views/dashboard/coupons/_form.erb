@@ -1,0 +1,21 @@
+<%= form_for @coupon, url: form_submit_path do |f| %>
+  <p>
+    <%= f.label :name %>:
+    <%= f.text_field :name, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :value %>:
+    <%= f.text_field :value, type: :number, min: 0.01, step: 0.01, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :coupon_type %>:<br>
+    <%= f.label :coupon_type, "Dollar Amount" %>
+    <%= f.radio_button :coupon_type, "Dollar", required: true %><br>
+    <%= f.label :coupon_type, "Percentage" %>
+    <%= f.radio_button :coupon_type, "Percentage", required: true %>
+  </p>
+
+  <%= f.submit "Submit" %>
+<% end %>
