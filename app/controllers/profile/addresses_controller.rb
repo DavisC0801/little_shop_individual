@@ -22,6 +22,7 @@ class Profile::AddressesController < ApplicationController
       if @address.used?
         flash[:error] = "Attempt to delete #{@address.nickname} was thwarted!"
       else
+        flash[:success] = "The address #{@address.nickname} has been deleted."
         @address.destroy
       end
       redirect_to profile_path
